@@ -1,0 +1,23 @@
+  <script>
+    // Simulated users
+    const users = {
+      'admin': { password: 'admin123', role: 'admin' },
+      'user1': { password: 'user123', role: 'user' }
+    };
+
+    document.getElementById('loginForm').addEventListener('submit', function(event) {
+      event.preventDefault(); // Prevent form from submitting
+
+      const username = document.getElementById('username').value;
+      const password = document.getElementById('password').value;
+
+      if (users[username] && users[username].password === password) {
+        const role = users[username].role;
+        document.getElementById('result').innerText = `Login successful. Role: ${role}`;
+        // Redirect based on role (optional)
+        // window.location.href = role === 'admin' ? 'admin.html' : 'user.html';
+      } else {
+        document.getElementById('result').innerText = 'Invalid username or password';
+      }
+    });
+  </script>
